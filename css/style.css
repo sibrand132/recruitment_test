@@ -1,0 +1,34 @@
+body{
+  background-image: url('../img/footer_lodyas.png')
+}
+
+.clickable{
+  cursor: pointer;
+}
+
+#employees-table{
+margin-top: 10px;
+}
+
+.container{
+  margin: 20px;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+th{
+  color: white;
+  background-color: #33899a;
+}
+
+.role-span{
+  font-weight: bold;
+}
+
+
+@media screen and (max-width: 768px) {
+  #table-size{
+    margin-top: 10px;
+  }
+}

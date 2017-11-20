@@ -1,0 +1,51 @@
+<div class="container">
+
+<!-- <span  data-toggle="tooltip" title="Hooray!">Hover over me</span> -->
+
+
+<div style="text-align: center">
+  Your are now:</br>
+  <span class="role-span" ng-style="{'color': !isAdmin ? '#00cc00' : 'black'}">User </span><button class="btn btn-default" type="button" name="button" ng-click="changeIsAdmin()">
+    <span ng-if="!isAdmin" class="glyphicon glyphicon-arrow-left"></span>
+    <span ng-if="isAdmin" class="glyphicon glyphicon-arrow-right"></span>
+  </button><span class="role-span" ng-style="{'color': isAdmin ? '#00cc00' : 'black'}"> Admin</span>
+  </br></br>
+</div>
+
+  <div class="row">
+    <div class="col-sm-8">
+      <div id="search-box" class="input-group">
+        <input id="search" type="text" class="form-control" ng-model="search.last_name" name="search" placeholder="Search...">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <select id="table-size" class="form-control" ng-options="num for num in numEmployees" ng-model="totalEmployeesDisplayed"></select>
+    </div>
+  </div>
+
+
+  <table id="employees-table" class="table table-hover table-responsive">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Employee</th>
+        <th>Role</th>
+        <th>Experience</th>
+        <th ng-if="isAdmin"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="clickable"  data-toggle="tooltip" data-placement="bottom" data-container="body" data-original-title="{{employee.short_description}}"
+          ng-repeat="employee in employees | limitTo: totalEmployeesDisplayed | filter: search"
+          ng-click="go(employee.id)">
+        <td>{{$index+1}}</td>
+        <td >{{employee.first_name}} {{employee.last_name}}</td>
+        <td>{{employee.role}}</td>
+        <td>{{employee.experience}} months</td>
+        <td ng-if="isAdmin"><button class="btn btn-sm btn-danger" ng-click="remove(employee.id)"><span class="glyphicon glyphicon-trash"></span></button></td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
